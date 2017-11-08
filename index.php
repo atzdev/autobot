@@ -26,11 +26,12 @@ if(!is_null($events['events'])) {
 
 		// Line API send a lot of event type, we interested in message only
 		if($event['type'] == 'message') {
-			// Get replyToken
-			$replyToken = $event['replyToken'];
+			
 
 			switch ($event['message']['type']) {
 				case 'text':
+				// Get replyToken
+				$replyToken = $event['replyToken'];
 					$httpClient = new CurlHTTPClient($channel_token);
 					$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 					$TextMessageBuilder = new TextMessageBuilder($respMessage);
