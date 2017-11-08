@@ -10,7 +10,7 @@ use \LINE\LINEBot;
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
-$channel_token = 'xa0m0qH9fn+pbwz4J82W6QqCO9xuP1c/M1yRgvq8bwiEkEupFRuvV49vw1KD+Y20iavYhr2nb50J5xC5Ie+SK3+llrDSmkHsrOOqsKceCJlNZdkqKir4JHayUiC5EFGFljG6+N8jOfdBoMVuKyuRXgdB04t89/1O/w1cDnyilFU=';
+$channel_token = 'jra+Ecst9ju1KRTMl6KLCQl6uP7jag8mayRDQxQF68eWfUePohFI5xAB3Y12s8pziavYhr2nb50J5xC5Ie+SK3+llrDSmkHsrOOqsKceCJnVk9dUXXnrw+0SoRTolRNPzybUUG+9f1yE80sIqDrzYQdB04t89/1O/w1cDnyilFU=';
 
 $channel_secret = '5c0528b536650228907f3e4cce3bde13';
 
