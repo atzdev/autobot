@@ -17,7 +17,7 @@ $channel_secret = '5c0528b536650228907f3e4cce3bde13';
 // Get message from Line API
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
-dd($events);
+
 if(!is_null($events['events'])) {
 	// Loop through each event
 	foreach($events['events'] as $event) {
@@ -29,7 +29,7 @@ if(!is_null($events['events'])) {
 					$replyToken = $event['replyToken'];
 
 					// Reply message
-					$respMessage = 'Hello, your message is '. $event['message']['text'];
+					$respMessage = 'สวัสดี, ข้อความที่คุณส่งมาคือ '. $event['message']['text'] . 'ใช่ไหมจ๊ะ?';
 
 					$httpClient = new CurlHTTPClient($channel_token);
 					$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
