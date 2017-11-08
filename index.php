@@ -31,9 +31,6 @@ if(!is_null($events['events'])) {
 
 			switch ($event['message']['type']) {
 				case 'text':
-
-				
-
 					$respMessage = 'Hello, your message is : '. $event['message']['text'];
 
 					/*$httpClient = new CurlHTTPClient($channel_token);
@@ -48,20 +45,22 @@ if(!is_null($events['events'])) {
 					$respMessage = 'Hello, your image ID is '. $messageID;
 					
 					break;
+
 				case 'sticker':
 					$messageID = $event['message']['packageId'];
 					//Reply message
 					$respMessage = 'Hello, your Sticker Package ID is '.$messageID;
 					break;
+					
 				case 'video':
 					$messageID = $event['message']['id'];
 
 					// Create video file on server.
-					$fileID = $event['message']['id'];
+					/*$fileID = $event['message']['id'];
 					$response = $bot->getMessageContent($fileID);
 					$fileName = 'linebot.mp4';
 					$file = fopen($fileName, 'w');
-					fwrite($file, $response->getRawBody());
+					fwrite($file, $response->getRawBody());*/
 
 					// replyMessage
 					$respMessage = 'Hello, your video ID is '. $messageID;
