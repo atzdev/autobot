@@ -26,13 +26,13 @@ if(!is_null($events['events'])) {
 
 		// Line API send a lot of event type, we interested in message only
 		if($event['type'] == 'message') {
-			
+			// Get replyToken
+			$replyToken = $event['replyToken'];
 
 			switch ($event['message']['type']) {
 				case 'text':
 
-				// Get replyToken
-				$replyToken = $event['replyToken'];
+				
 
 					$respMessage = 'Hello, your message is : '. $event['message']['text'];
 
