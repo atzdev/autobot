@@ -5,8 +5,7 @@ require_once('./vendor/autoload.php');
 // Namespace
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot;
-use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
-use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
 
 //Token
 $channel_token = 'jra+Ecst9ju1KRTMl6KLCQl6uP7jag8mayRDQxQF68eWfUePohFI5xAB3Y12s8pziavYhr2nb50J5xC5Ie+SK3+llrDSmkHsrOOqsKceCJnVk9dUXXnrw+0SoRTolRNPzybUUG+9f1yE80sIqDrzYQdB04t89/1O/w1cDnyilFU=';
@@ -23,18 +22,18 @@ if(!is_null($events['events'])) {
 
 		// Get replyToken
 		$replyToken = $event['replyToken'];
-		$ask = $event['message']['text'];
+		
+		// Sticker
+		$packageId = 1;
+		$stickerId = 410;
 
-		// Image
-		$originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001.jpg?v=1489538709';
 
-		$previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001.jpg?v=1489538709';
 
 		$HTTPClient = new CurlHTTPClient($channel_token);
 		$bot = new LINEBot($HTTPClient, array('channelSecret' => $channel_secret));
 
-		$TextMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
-		$response = $bot->replyMessage($replyToken, $TextMessageBuilder);
+		$textMessageBuilder = new StickerMessageBuilder($packageId, $stickerId);
+		$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 
 	}
 }
