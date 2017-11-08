@@ -78,6 +78,11 @@ if(!is_null($events['events'])) {
 						// reply message
 						$respMessage = 'Hello, your audio ID is '. $messageID;
 						break;
+					case 'location':
+					$address = $event['message']['address'];
+
+					// Reply message
+					$respMessage = 'Hello, your address is '. $address;
 				default:
 					$respMessage = 'Please send image or text only ^^';
 					break;
