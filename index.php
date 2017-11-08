@@ -29,7 +29,7 @@ if(!is_null($events['events'])) {
 					$replyToken = $event['replyToken'];
 
 					// Reply message
-					$respMessage = 'สวัสดี, ข้อความที่คุณส่งมาคือ '. $event['message']['text'] . 'ใช่ไหมจ๊ะ?';
+					$respMessage = 'Hello, your message is :  '. $event['message']['text'];
 
 					$httpClient = new CurlHTTPClient($channel_token);
 					$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
