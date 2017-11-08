@@ -80,11 +80,13 @@ if(!is_null($events['events'])) {
 						break;
 					case 'location':
 						$address = $event['message']['address'];
+						$lat = $event['message']['latitude'];
+						$lng = $event['message']['longitude'];
 
 						// Reply message
-						$respMessage = 'Hello, your address is '. $address;
+						$respMessage = 'Hello, your address is '. $address. ' lat: '.$lat. ' long: '. $lng;
 						break;
-						
+
 				default:
 					$respMessage = 'Please send image or text only ^^';
 					break;
