@@ -21,83 +21,27 @@ $events = json_decode($content, true);
 if(!is_null($events['events'])) {
 	// Loop through each event
 	foreach($events['events'] as $event) {
+		// Get replyToken
+		$replyToken = $event['replyToken'];
+		$ask = $event['message']['text'];
 
-
-
-		// Line API send a lot of event type, we interested in message only
-		if($event['type'] == 'message') {
-			// Get replyToken
-			$replyToken = $event['replyToken'];
-
-			switch ($event['message']['type']) {
-				case 'text':
-					$respMessage = 'Hello, your message is : '. $event['message']['text'];
-
-					/*$httpClient = new CurlHTTPClient($channel_token);
-					$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-					$TextMessageBuilder = new TextMessageBuilder($respMessage);
-					$response = $bot->replyMessage($replyToken, $TextMessageBuilder);*/
-
-					break;
-
-				case 'image':
-					$messageID = $event['message']['id'];
-					$respMessage = 'Hello, your image ID is '. $messageID;
-					
-					break;
-
-				case 'sticker':
-					$messageID = $event['message']['packageId'];
-					//Reply message
-					$respMessage = 'Hello, your Sticker Package ID is '.$messageID;
-					break;
-
-				case 'video':
-					$messageID = $event['message']['id'];
-
-					// Create video file on server.
-					/*$fileID = $event['message']['id'];
-					$response = $bot->getMessageContent($fileID);
-					$fileName = 'linebot.mp4';
-					$file = fopen($fileName, 'w');
-					fwrite($file, $response->getRawBody());*/
-					//fclose($file);
-
-					// replyMessage
-					$respMessage = 'Hello, your video ID is '. $messageID;
-					break;
-					case 'audio':
-						$messageID = $event['message']['id'];
-
-						//create audio file on server
-						/*$fileID = $event['message']['id'];
-						$response = $bot->getMessageContent($fileID);
-						$fileName = 'linebot.m4a';
-						$file = fopen($fileName, 'w');
-						fwrite($file, $response->getRawBody());*/
-						// reply message
-						$respMessage = 'Hello, your audio ID is '. $messageID;
-						break;
-					case 'location':
-						$address = $event['message']['address'];
-						$lat = $event['message']['latitude'];
-						$lng = $event['message']['longitude'];
-
-						// Reply message
-						$respMessage = 'Hello, your address is '. $address. ' lat: '.$lat. ' long: '. $lng;
-						break;
-
-				default:
-					$respMessage = 'Please send image or text only ^^';
-					break;
-				
-			}
-
-			$httpClient = new CurlHTTPClient($channel_token);
-			$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-			$TextMessageBuilder = new TextMessageBuilder($respMessage);
-			$response = $bot->replyMessage($replyToken, $TextMessageBuilder);
+		switch (strtolower($ask)) {
+			case 'm':
+				$respMessage = 'What sup man. Go away!!';
+				break;
+			case 'f':
+				$respMessage = 'Love you lady.';
+			default:
+				$respMessage = 'What is your sex? M or F';
+				break;
 		}
+
+		$HTTPClient = new CurlHTTPClient($channel_token);
+		$bot = new LINEBot($HTTPClient, array('channelSecret' => $channel_secret));
+
+		$TextMessageBuilder = new TextMessageBuilder($respMessage);
+		$response = $bot->replyMessage($respMessage, $TextMessageBuilder);
+		
 	}
 }
 
