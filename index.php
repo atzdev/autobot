@@ -37,14 +37,7 @@ if(!is_null($events['events'])) {
 					$response = $bot->replyMessage($replyToken, $TextMessageBuilder);
 
 					break;
-				case 'image':
-					$messageId = $event['message']['id'];
-					$respMessage = 'Hello, your image ID is '. $messageID;
-					break;
-
-				default:
-					$respMessage = 'Please send image only';
-					break;
+				
 				
 				
 			}
