@@ -51,7 +51,7 @@ if(!is_null($events['events'])) {
 					//Reply message
 					$respMessage = 'Hello, your Sticker Package ID is '.$messageID;
 					break;
-					
+
 				case 'video':
 					$messageID = $event['message']['id'];
 
@@ -61,6 +61,7 @@ if(!is_null($events['events'])) {
 					$fileName = 'linebot.mp4';
 					$file = fopen($fileName, 'w');
 					fwrite($file, $response->getRawBody());
+					fclose($file);
 
 					// replyMessage
 					$respMessage = 'Hello, your video ID is '. $messageID;
