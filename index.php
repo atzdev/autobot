@@ -70,11 +70,11 @@ if(!is_null($events['events'])) {
 						$messageID = $event['message']['id'];
 
 						//create audio file on server
-						$fileID = $event['message']['id'];
+						/*$fileID = $event['message']['id'];
 						$response = $bot->getMessageContent($fileID);
 						$fileName = 'linebot.m4a';
 						$file = fopen($fileName, 'w');
-						fwrite($file, $response->getRawBody());
+						fwrite($file, $response->getRawBody());*/
 						// reply message
 						$respMessage = 'Hello, your audio ID is '. $messageID;
 						break;
