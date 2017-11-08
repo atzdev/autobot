@@ -24,22 +24,15 @@ if(!is_null($events['events'])) {
 		$replyToken = $event['replyToken'];
 		$ask = $event['message']['text'];
 
-		switch (strtolower($ask)) {
-			case 'm':
-				$respMessage = 'What sup man. Go away!!';
-				break;
-			case 'f':
-				$respMessage = 'Love you lady.';
-				break;
-			default:
-				$respMessage = 'What is your sex? M or F';
-				break;
-		}
+		// Image
+		$originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001.jpg?v=1489538709';
+
+		$previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001.jpg?v=1489538709';
 
 		$HTTPClient = new CurlHTTPClient($channel_token);
 		$bot = new LINEBot($HTTPClient, array('channelSecret' => $channel_secret));
 
-		$TextMessageBuilder = new TextMessageBuilder($respMessage);
+		$TextMessageBuilder = new TextMessageBuilder($$originalContentUrl, $previewImageUrl);
 		$response = $bot->replyMessage($replyToken, $TextMessageBuilder);
 
 	}
