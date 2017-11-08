@@ -36,10 +36,10 @@ if(!is_null($events['events'])) {
 
 					$respMessage = 'Hello, your message is '. $event['message']['text'];
 
-					$httpClient = new CurlHTTPClient($channel_token);
+					/*$httpClient = new CurlHTTPClient($channel_token);
 					$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 					$TextMessageBuilder = new TextMessageBuilder($respMessage);
-					$response = $bot->replyMessage($replyToken, $TextMessageBuilder);
+					$response = $bot->replyMessage($replyToken, $TextMessageBuilder);*/
 
 					break;
 				
@@ -47,10 +47,10 @@ if(!is_null($events['events'])) {
 				
 			}
 
-			/*$httpClient = new CurlHTTPClient($channel_token);
+			$httpClient = new CurlHTTPClient($channel_token);
 			$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 			$TextMessageBuilder = new TextMessageBuilder($respMessage);
-			$response = $bot->replyMessage($replyToken, $TextMessageBuilder);*/
+			$response = $bot->replyMessage($replyToken, $TextMessageBuilder);
 		}
 	}
 }
