@@ -56,11 +56,11 @@ if(!is_null($events['events'])) {
 					$messageID = $event['message']['id'];
 
 					// Create video file on server.
-					/*$fileID = $event['message']['id'];
+					$fileID = $event['message']['id'];
 					$response = $bot->getMessageContent($fileID);
 					$fileName = 'linebot.mp4';
 					$file = fopen($fileName, 'w');
-					fwrite($file, $response->getRawBody());*/
+					fwrite($file, $response->getRawBody());
 
 					// replyMessage
 					$respMessage = 'Hello, your video ID is '. $messageID;
