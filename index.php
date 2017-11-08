@@ -30,12 +30,12 @@ if(!is_null($events['events'])) {
 
 			switch ($event['message']['type']) {
 				case 'text':
-<<<<<<< HEAD
+
 				// Get replyToken
 				$replyToken = $event['replyToken'];
-=======
+
 					$respMessage = 'Hello, your message is '. $event['message']['text'];
->>>>>>> send_text_to_bot
+
 					$httpClient = new CurlHTTPClient($channel_token);
 					$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 					$TextMessageBuilder = new TextMessageBuilder($respMessage);
@@ -47,10 +47,10 @@ if(!is_null($events['events'])) {
 				
 			}
 
-			$httpClient = new CurlHTTPClient($channel_token);
+			/*$httpClient = new CurlHTTPClient($channel_token);
 			$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 			$TextMessageBuilder = new TextMessageBuilder($respMessage);
-			$response = $bot->replyMessage($replyToken, $TextMessageBuilder);
+			$response = $bot->replyMessage($replyToken, $TextMessageBuilder);*/
 		}
 	}
 }
