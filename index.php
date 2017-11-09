@@ -41,7 +41,7 @@ if(!is_null($events['events'])) {
 					$responseMessage = '5845122451245';
 					break;
 				default:
-					$responseMessage = 'please use only this options.\1. tel';
+					$responseMessage = 'please use only this options.\n\r1. tel\n\r2. address\n\r3. boss\n\r4. idcard';
 					break;
 			}
 
