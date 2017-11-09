@@ -26,7 +26,7 @@ if(!is_null($events['events'])) {
 
 		
 
-			switch ($event['message']['text']) {
+			switch (strtolower($event['message']['text'])) {
 				case 'tel':
 					$responseMessage = '089-5124512';
 					break;
