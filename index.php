@@ -24,8 +24,7 @@ if(!is_null($events['events'])) {
 		$replyToken = $event['replyToken'];
 		
 
-		// Line API send a lot of event type, we interested in message only.
-		if($event['type'] == 'message' && $event['message']['type'] == 'text') {
+		
 
 			switch ($event['message']['text']) {
 				case 'tel':
@@ -47,7 +46,7 @@ if(!is_null($events['events'])) {
 			}
 
 
-			$responseMessage = 'Thanks you. I try to be your best friend.';
+			
 			
 			$HTTPClient = new CurlHTTPClient($channel_token);
 			$bot = new LINEBot($HTTPClient, array('channelSecret' => $channel_secret));
@@ -55,7 +54,7 @@ if(!is_null($events['events'])) {
 			$textMessageBuilder = new TextMessageBuilder($responseMessage);
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 
-		}
+		
 
 
 
