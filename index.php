@@ -25,9 +25,28 @@ if(!is_null($events['events'])) {
 		
 
 		// Line API send a lot of event type, we interested in message only.
-		if($event['type'] == 'follow') {
+		if($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-			// Greeting
+			switch ($event['message']['text']) {
+				case 'tel':
+					$responseMessage = '089-5124512';
+					break;
+				
+				case 'address':
+					$responseMessage = '99/451 Muang Nonthaburi';
+					break;
+				case 'boss':
+					$responseMessage = '089-2541545';
+					break;
+				case 'idcard':
+					$responseMessage = '5845122451245';
+					break;
+				default:
+					$responseMessage = 'please use only this options.';
+					break;
+			}
+
+
 			$responseMessage = 'Thanks you. I try to be your best friend.';
 			
 			$HTTPClient = new CurlHTTPClient($channel_token);
