@@ -63,7 +63,8 @@ if(!is_null($events['events'])) {
 						}*/
 
 
-						$respMessage = 'Check your appointments.'.$str;	
+						//$respMessage = 'Check your appointments.'.$str;	
+						$respMessage = print_r($row);
 
 						break;
 					
