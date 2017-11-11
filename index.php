@@ -46,8 +46,16 @@ if(!is_null($events['events'])) {
 					case 'check':
 						$statement = $connection->prepare("SELECT * FROM appointments");
 						$result = $statement->execute();
-						//$data = array($result);	
-						$respMessage = 'Check your appointments.'.$result;	
+						
+						// bind result variable
+						$stmt->bind_result($time,$content);
+
+						// fetch values
+						$str = '';
+						while ($stmt->fetch()){
+							$str += $time.','.$content.'\n\r';
+						}
+						$respMessage = 'Check your appointments.'.$str;	
 
 						break;
 					
