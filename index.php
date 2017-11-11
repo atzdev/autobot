@@ -41,10 +41,14 @@ if(!is_null($events['events'])) {
 					'time' => $appointments[0],
 					'content' => $appointments[1],
 				);
-				$chk_type = $appointments['0'];
+				$chk_type = strtolower($appointments['0']);
 				switch ($chk_type) {
 					case 'check':
-						$respMessage = 'Check your appointments.';	
+						$statement = $connection->prepare("SELECT * FROM appointments");
+						$result = $statement->execute();
+						//$data = array($result);	
+						$respMessage = 'Check your appointments.'.$result;	
+
 						break;
 					
 					default:
