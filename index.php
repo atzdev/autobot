@@ -48,12 +48,12 @@ if(!is_null($events['events'])) {
 						$result = $statement->execute();
 						
 						// bind result variable
-						$stmt->bind_result($time,$content);
+						$stmt = $result->fetchAll();
 
 						// fetch values
 						$str = '';
-						while ($stmt->fetch()){
-							$str += $time.','.$content.'\n\r';
+						while ($row = $stmt->fetch()){
+							$str += $row[0].','.$row[1].'\n\r';
 						}
 						$respMessage = 'Check your appointments.'.$str;	
 
