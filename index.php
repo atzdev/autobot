@@ -20,43 +20,47 @@ if(!is_null($events['events'])) {
 	// Loop through each event
 	foreach($events['events'] as $event) {
 
-		// Get replyToken
-		$replyToken = $event['replyToken'];
-		
+		// Line API send a lot of event type, we interested in message only.
+		if($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-		
+			//Get replyToken
+			$replyToken = $event['replyToken'];
 
-			switch (strtolower($event['message']['text'])) {
-				case 'tel':
-					$responseMessage = '089-5124512';
-					break;
-				
-				case 'address':
-					$responseMessage = '99/451 Muang Nonthaburi';
-					break;
-				case 'boss':
-					$responseMessage = '089-2541545';
-					break;
-				case 'idcard':
-					$responseMessage = '5845122451245';
-					break;
-				default:
-					$responseMessage = 'please use only this options.\n\r1. tel\n\r2. address\n\r3. boss\n\r4. idcard';
-					break;
+			//Split message then keep it in database.
+			$appointments = explode(',', $event['message']['text']);
+
+			if(count($appointments) == 2) {
+				$host = 'ec2-184-72-255-211.compute-1.amazonaws.com';
+				$dbname = 'd42gpikgni8fd5';
+				$user = 'vlpqdlcykflbpx';
+				$pass = '92eff834a65004f36dea77d0f95d61b9d2622751936bf02118908e20ba08005d';
+
+				$connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+
+				$params = array(
+					'time' => $appointments[0],
+					'content' => $appointments[1],
+				);
+
+				$statement = $connection->prepare("INSERT INTO appointments (time, content)VALUES(:time,:content)");
+
+				$result = $statement->execute($params);
+
+				$respMessage = 'Your appointments has saved';
+
+			} else {
+				$respMessage = 'You can send appointment like this "12.00,House keeping."';
 			}
 
+			$httpClient = new CurlHTTPClient($channel_token);
+			$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 
-			
-			
-			$HTTPClient = new CurlHTTPClient($channel_token);
-			$bot = new LINEBot($HTTPClient, array('channelSecret' => $channel_secret));
+			$TextMessageBuilder = new TextMessageBuilder($respMessage);
+			$response = $bot->replyMessage($replyToken, $TextMessageBuilder);
 
-			$textMessageBuilder = new TextMessageBuilder($responseMessage);
-			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 
+		}
 		
-
-
 
 		
 
