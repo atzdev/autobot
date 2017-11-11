@@ -48,6 +48,10 @@ if(!is_null($events['events'])) {
 
 				$respMessage = 'Your appointments has saved';
 
+
+			else if ($appointments[0] == 'check') {
+
+				$respMessage = 'Check your appointments.';	
 			} else {
 				$respMessage = 'You can send appointment like this "12.00,House keeping."';
 			}
