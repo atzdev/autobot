@@ -52,9 +52,17 @@ if(!is_null($events['events'])) {
 
 						// fetch values
 						$str = '555';
-						while ($row = $result->fetch()){
+						/*while ($row = $result->fetch()){
 							$str += $row[0].','.$row[1].'\n\r';
+						}*/
+
+						while ($result->fetch()) {
+							foreach ($row_tmb as $key => $value) {
+								$str += $value;
+							}
 						}
+
+
 						$respMessage = 'Check your appointments.'.$str;	
 
 						break;
