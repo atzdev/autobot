@@ -41,17 +41,19 @@ if(!is_null($events['events'])) {
 					'time' => $appointments[0],
 					'content' => $appointments[1],
 				);
-
-				$statement = $connection->prepare("INSERT INTO appointments (time, content)VALUES(:time,:content)");
-
-				$result = $statement->execute($params);
-
-				$respMessage = 'Your appointments has saved';
-
-
-			} elseif ($appointments[0] == 'check') {
-
-				$respMessage = 'Check your appointments.';	
+				$chk_type = $appointments['0'];
+				switch ($chk_type) {
+					case 'check':
+						$respMessage = 'Check your appointments.';	
+						break;
+					
+					default:
+						$statement = $connection->prepare("INSERT INTO appointments (time, content)VALUES(:time,:content)");
+							$result = $statement->execute($params);
+							$respMessage = 'Your appointments has saved';
+						break;
+				}
+				
 			} else {
 				$respMessage = 'You can send appointment like this "12.00,House keeping."';
 			}
