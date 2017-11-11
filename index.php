@@ -44,23 +44,23 @@ if(!is_null($events['events'])) {
 				$chk_type = strtolower($appointments['0']);
 				switch ($chk_type) {
 					case 'check':
-						$statement = $connection->prepare("SELECT * FROM appointments");
-						$result = $statement->execute();
+						$sql = $connection->prepare("SELECT * FROM appointments");
+						$row = $sql->fetchAll(PDO::FETCH_ASSOC);
 						
 						// bind result variable
 						//$stmt = $result->fetchAll();
 
 						// fetch values
-						$str = '555';
+						$str = $row;
 						/*while ($row = $result->fetch()){
 							$str += $row[0].','.$row[1].'\n\r';
 						}*/
 
-						while ($result->fetch()) {
+						/*while ($result->fetch()) {
 							foreach ($row_tmb as $key => $value) {
 								$str += $value;
 							}
-						}
+						}*/
 
 
 						$respMessage = 'Check your appointments.'.$str;	
