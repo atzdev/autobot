@@ -51,7 +51,7 @@ if(!is_null($events['events'])) {
 						//$stmt = $result->fetchAll();
 
 						// fetch values
-						$str = '';
+						$str = '555';
 						while ($row = $result->fetch()){
 							$str += $row[0].','.$row[1].'\n\r';
 						}
