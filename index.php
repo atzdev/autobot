@@ -49,7 +49,7 @@ if(!is_null($events['events'])) {
 				$respMessage = 'Your appointments has saved';
 
 
-			elseif ($appointments[0] == 'check') {
+			} elseif ($appointments[0] == 'check') {
 
 				$respMessage = 'Check your appointments.';	
 			} else {
